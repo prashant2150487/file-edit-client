@@ -1,0 +1,176 @@
+header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: 64px;
+  padding: 0 20px;
+}
+
+.header-container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 20px;
+  color: #e5322d; // iLovePDF Red
+  
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.nav-wrapper {
+  height: 100%;
+  flex: 1;
+  margin-left: 40px;
+}
+
+.nav-main {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 24px;
+}
+
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  &:hover .dropdown-menu {
+    display: block;
+  }
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #4d4d4d;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  height: 100%;
+
+  &:hover {
+    color: #e5322d;
+  }
+
+  &.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+}
+
+.dropdown-arrow {
+  width: 14px;
+  height: 14px;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 220px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 12px 0;
+  z-index: 1001;
+
+  a, .disabled-link {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #4d4d4d;
+    font-size: 14px;
+
+    &:hover {
+      background: #f8f9fa;
+      color: #e5322d;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.5;
+      cursor: default;
+      
+      &:hover {
+        background: transparent;
+        color: inherit;
+      }
+    }
+  }
+}
+
+.section-title {
+  padding: 8px 16px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-btn {
+  text-decoration: none;
+  color: #262626;
+  font-weight: 600;
+  font-size: 14px;
+
+  &:hover {
+    color: #e5322d;
+  }
+}
+
+.signup-btn {
+  text-decoration: none;
+  background: #e5322d;
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #c22925;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(229, 50, 45, 0.3);
+  }
+}
+
+.menu-icon {
+  width: 24px;
+  height: 24px;
+  color: #4d4d4d;
+  cursor: pointer;
+  margin-left: 8px;
+
+  &:hover {
+    color: #262626;
+  }
+}
