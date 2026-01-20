@@ -58,9 +58,6 @@ const CompressImage = () => {
 
     ctx.drawImage(img, 0, 0);
 
-    // Export as webp if supported, otherwise jpeg
-    const type = fileObj.file.type === "image/png" ? "image/png" : "image/jpeg";
-
     canvas.toBlob(
       (blob) => {
         if (!blob) return;
