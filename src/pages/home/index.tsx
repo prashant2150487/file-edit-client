@@ -86,8 +86,7 @@ const Home = () => {
           <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h7m4 0h5m0 0v5m0-5L12 12" />
         </svg>
       ),
-      route: ROUTES.HOME,
-      disabled: true,
+      route: ROUTES.PNG_TO_JPG,
     },
     {
       title: "Compress Image",

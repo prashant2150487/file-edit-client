@@ -109,9 +109,7 @@ const Header = () => {
               <div className="dropdown-menu">
                 <div className="section-title">Convert Image</div>
                 <Link to={ROUTES.JPG_TO_PNG}>JPG to PNG</Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  PNG to JPG
-                </Link>
+                <Link to={ROUTES.PNG_TO_JPG}>PNG to JPG</Link>
                 <Link to={ROUTES.HOME} className="disabled">
                   Image to JPG
                 </Link>
@@ -189,10 +187,18 @@ const Header = () => {
         <div className="sidebar-content">
           <div className="sidebar-section">
             <div className="section-title">Organize PDF</div>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              to={ROUTES.HOME}
+              className="disabled"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Merge PDF
             </Link>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              to={ROUTES.HOME}
+              className="disabled"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Split PDF
             </Link>
             <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
@@ -201,16 +207,32 @@ const Header = () => {
           </div>
           <div className="sidebar-section">
             <div className="section-title">Convert PDF</div>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              to={ROUTES.HOME}
+              className="disabled"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Word to PDF
             </Link>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              to={ROUTES.HOME}
+              className="disabled"
+              onClick={() => setIsMenuOpen(false)}
+            >
               JPG to PDF
             </Link>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              to={ROUTES.HOME}
+              className="disabled"
+              onClick={() => setIsMenuOpen(false)}
+            >
               PDF to Word
             </Link>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link
+              to={ROUTES.HOME}
+              className="disabled"
+              onClick={() => setIsMenuOpen(false)}
+            >
               PDF to JPG
             </Link>
           </div>
@@ -219,11 +241,7 @@ const Header = () => {
             <Link to={ROUTES.JPG_TO_PNG} onClick={() => setIsMenuOpen(false)}>
               JPG to PNG
             </Link>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.PNG_TO_JPG} onClick={() => setIsMenuOpen(false)}>
               PNG to JPG
             </Link>
             <Link
