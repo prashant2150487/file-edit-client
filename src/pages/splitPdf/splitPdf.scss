@@ -1,0 +1,31 @@
+@import "../jpgToPng/jpgToPng.scss";
+
+.file-info-box {
+  background: #f8f9fa;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.reset-link {
+  background: none;
+  border: none;
+  color: #e5322d;
+  cursor: pointer;
+  font-weight: 600;
+  &:hover { text-decoration: underline; }
+}
+
+.tool-settings input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  &:focus { border-color: #e5322d; }
+}

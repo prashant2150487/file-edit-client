@@ -1,0 +1,57 @@
+@import "../jpgToPng/jpgToPng.scss";
+
+.files-list {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.file-row {
+  background: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  .file-info-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+    .order {
+        background: #f0f0f0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 14px;
+    }
+
+    .name {
+      font-weight: 600;
+      color: #333;
+    }
+
+    .size {
+      color: #888;
+      font-size: 12px;
+    }
+  }
+
+  .remove-btn {
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    &:hover { color: #e5322d; }
+  }
+}

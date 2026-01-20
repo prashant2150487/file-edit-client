@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import type { ChangeEvent, DragEvent } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
-import "./jpgToPng.scss";
+import "./pngToJpg.scss";
 
 interface FileWithPreview {
   file: File;
@@ -12,14 +12,13 @@ interface FileWithPreview {
   isConverting?: boolean;
 }
 
-const JpgToPng = () => {
+const PngToJpg = () => {
   const [files, setFiles] = useState<FileWithPreview[]>([]);
-  const [quality, setQuality] = useState(0.8);
-  const [outputFormat, setOutputFormat] = useState<"png" | "webp">("png");
+  const [quality, setQuality] = useState(0.85); // Default quality for JPG
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Cleanup object URLs on unmount
+    // Cleanup object URLs to prevent memory leaks
     return () => {
       files.forEach((f) => {
         URL.revokeObjectURL(f.preview);
@@ -43,7 +42,7 @@ const JpgToPng = () => {
 
   const addFiles = (newFiles: File[]) => {
     const validFiles = newFiles
-      .filter((file) => file.type === "image/jpeg" || file.type === "image/jpg")
+      .filter((file) => file.type === "image/png")
       .map((file) => ({
         file,
         preview: URL.createObjectURL(file),
@@ -56,9 +55,8 @@ const JpgToPng = () => {
     setFiles((prev) => {
       const newFiles = [...prev];
       URL.revokeObjectURL(newFiles[index].preview);
-      if (newFiles[index].converted) {
+      if (newFiles[index].converted)
         URL.revokeObjectURL(newFiles[index].converted!);
-      }
       newFiles.splice(index, 1);
       return newFiles;
     });
@@ -72,7 +70,13 @@ const JpgToPng = () => {
     setFiles([]);
   };
 
-  const convertToPng = async (fileObj: FileWithPreview, index: number) => {
+  /**
+   * Core Logic: PNG to JPG Conversion
+   * 1. Load the PNG image into an Image object
+   * 2. Draw it onto a Canvas
+   * 3. Export the canvas as 'image/jpeg' with the specified quality
+   */
+  const convertToJpg = async (fileObj: FileWithPreview, index: number) => {
     setFiles((prev) =>
       prev.map((f, i) => (i === index ? { ...f, isConverting: true } : f)),
     );
@@ -89,11 +93,10 @@ const JpgToPng = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    // Set background to white for JPG (since JPG doesn't support transparency)
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.drawImage(img, 0, 0);
-
-    const mimeType = `image/${outputFormat}`;
-    // Quality only works for image/jpeg and image/webp in most browsers
-    const conversionQuality = outputFormat === "webp" ? quality : undefined;
 
     canvas.toBlob(
       (blob) => {
@@ -114,16 +117,15 @@ const JpgToPng = () => {
           ),
         );
       },
-      mimeType,
-      conversionQuality,
+      "image/jpeg",
+      quality,
     );
   };
 
   const downloadFile = (convertedData: string, originalName: string) => {
     const link = document.createElement("a");
     link.href = convertedData;
-    const extension = outputFormat;
-    link.download = originalName.replace(/\.(jpg|jpeg)$/i, `.${extension}`);
+    link.download = originalName.replace(/\.png$/i, ".jpg");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -137,91 +139,38 @@ const JpgToPng = () => {
     >
       <Helmet>
         <title>
-          Convert JPG to PNG Online - High Quality & Free | File Edit
+          Convert PNG to JPG Online - Fast & Quality Controlled | File Edit
         </title>
         <meta
           name="description"
-          content="Easily convert your JPG images to PNG format online for free. Support for high-quality conversion, transparency, and bulk processing. No registration required."
-        />
-        <meta
-          name="keywords"
-          content="JPG to PNG, image converter, convert JPG to PNG, free online converter, bulk image conversion"
-        />
-        <link rel="canonical" href="https://fileedit.com/jpg-to-png" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://fileedit.com/jpg-to-png" />
-        <meta
-          property="og:title"
-          content="Convert JPG to PNG Online - High Quality & Free"
-        />
-        <meta
-          property="og:description"
-          content="Easily convert your JPG images to PNG format online for free. Support for high-quality conversion and transparency."
-        />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://fileedit.com/jpg-to-png"
-        />
-        <meta
-          property="twitter:title"
-          content="Convert JPG to PNG Online - High Quality & Free"
-        />
-        <meta
-          property="twitter:description"
-          content="Easily convert your JPG images to PNG format online for free."
+          content="Quickly convert PNG images to high-quality JPG files. Adjust quality to control file size."
         />
       </Helmet>
+
       <Header />
+
       <main className="tool-page">
         <div className="tool-header">
-          <h1>JPG to PNG</h1>
-          <p>
-            Convert your JPG images to PNG format with high quality and
-            transparency support.
-          </p>
+          <h1>PNG to JPG</h1>
+          <p>Quickly convert your PNG images to high-quality JPG format.</p>
         </div>
 
-        {/* Conversion Settings */}
+        {/* Quality Control Slider */}
         <div className="tool-settings">
           <div className="setting-group">
-            <label>Output Format:</label>
-            <div className="format-toggles">
-              <button
-                className={outputFormat === "png" ? "active" : ""}
-                onClick={() => setOutputFormat("png")}
-              >
-                PNG (Lossless)
-              </button>
-              <button
-                className={outputFormat === "webp" ? "active" : ""}
-                onClick={() => setOutputFormat("webp")}
-              >
-                WebP (Optimized)
-              </button>
-            </div>
+            <label>Output Quality: {Math.round(quality * 100)}%</label>
+            <input
+              type="range"
+              min="0.1"
+              max="1"
+              step="0.05"
+              value={quality}
+              onChange={(e) => setQuality(parseFloat(e.target.value))}
+            />
+            <span className="setting-hint">
+              Higher quality results in larger files.
+            </span>
           </div>
-
-          {outputFormat === "webp" && (
-            <div className="setting-group">
-              <label>Quality: {Math.round(quality * 100)}%</label>
-              <input
-                type="range"
-                min="0.1"
-                max="1"
-                step="0.05"
-                value={quality}
-                onChange={(e) => setQuality(parseFloat(e.target.value))}
-              />
-              <span className="setting-hint">
-                Lower quality = Smaller file size
-              </span>
-            </div>
-          )}
         </div>
 
         {files.length === 0 ? (
@@ -230,7 +179,7 @@ const JpgToPng = () => {
               <input
                 type="file"
                 multiple
-                accept=".jpg,.jpeg"
+                accept=".png"
                 style={{ display: "none" }}
                 ref={fileInputRef}
                 onChange={handleFileSelect}
@@ -239,10 +188,10 @@ const JpgToPng = () => {
                 className="select-button"
                 onClick={() => fileInputRef.current?.click()}
               >
-                Select JPG images
+                Select PNG images
               </button>
             </div>
-            <p className="drop-text">or drop JPGs here</p>
+            <p className="drop-text">or drop PNG files here</p>
           </div>
         ) : (
           <div className="files-grid-container">
@@ -252,7 +201,6 @@ const JpgToPng = () => {
                   <button
                     className="remove-file-btn"
                     onClick={() => removeFile(index)}
-                    title="Remove file"
                   >
                     <svg viewBox="0 0 24 24" width="16" height="16">
                       <path
@@ -282,11 +230,11 @@ const JpgToPng = () => {
                       <button
                         className="convert-btn-small"
                         disabled={fileObj.isConverting}
-                        onClick={() => convertToPng(fileObj, index)}
+                        onClick={() => convertToJpg(fileObj, index)}
                       >
                         {fileObj.isConverting
                           ? "Converting..."
-                          : "Convert to PNG"}
+                          : "Convert to JPG"}
                       </button>
                     ) : (
                       <button
@@ -295,7 +243,7 @@ const JpgToPng = () => {
                           downloadFile(fileObj.converted!, fileObj.file.name)
                         }
                       >
-                        Download PNG
+                        Download JPG
                       </button>
                     )}
                   </div>
@@ -310,12 +258,12 @@ const JpgToPng = () => {
                 className="add-more-btn"
                 onClick={() => fileInputRef.current?.click()}
               >
-                Add more files
+                Add more
               </button>
               <button
                 className="convert-all-btn"
                 onClick={() =>
-                  files.forEach((f, i) => !f.converted && convertToPng(f, i))
+                  files.forEach((f, i) => !f.converted && convertToJpg(f, i))
                 }
               >
                 Convert All
@@ -328,4 +276,4 @@ const JpgToPng = () => {
   );
 };
 
-export default JpgToPng;
+export default PngToJpg;
