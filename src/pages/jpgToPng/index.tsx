@@ -8,17 +8,23 @@ interface FileWithPreview {
   file: File;
   preview: string;
   converted?: string;
+  convertedSize?: number;
   isConverting?: boolean;
 }
 
 const JpgToPng = () => {
   const [files, setFiles] = useState<FileWithPreview[]>([]);
+  const [quality, setQuality] = useState(0.8);
+  const [outputFormat, setOutputFormat] = useState<"png" | "webp">("png");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     // Cleanup object URLs on unmount
     return () => {
-      files.forEach((f) => URL.revokeObjectURL(f.preview));
+      files.forEach((f) => {
+        URL.revokeObjectURL(f.preview);
+        if (f.converted) URL.revokeObjectURL(f.converted);
+      });
     };
   }, [files]);
 
@@ -50,13 +56,19 @@ const JpgToPng = () => {
     setFiles((prev) => {
       const newFiles = [...prev];
       URL.revokeObjectURL(newFiles[index].preview);
+      if (newFiles[index].converted) {
+        URL.revokeObjectURL(newFiles[index].converted!);
+      }
       newFiles.splice(index, 1);
       return newFiles;
     });
   };
 
   const resetAll = () => {
-    files.forEach((f) => URL.revokeObjectURL(f.preview));
+    files.forEach((f) => {
+      URL.revokeObjectURL(f.preview);
+      if (f.converted) URL.revokeObjectURL(f.converted);
+    });
     setFiles([]);
   };
 
@@ -79,20 +91,39 @@ const JpgToPng = () => {
 
     ctx.drawImage(img, 0, 0);
 
-    // PNG is lossless, so we maintain quality
-    const pngData = canvas.toDataURL("image/png");
+    const mimeType = `image/${outputFormat}`;
+    // Quality only works for image/jpeg and image/webp in most browsers
+    const conversionQuality = outputFormat === "webp" ? quality : undefined;
 
-    setFiles((prev) =>
-      prev.map((f, i) =>
-        i === index ? { ...f, converted: pngData, isConverting: false } : f,
-      ),
+    canvas.toBlob(
+      (blob) => {
+        if (!blob) return;
+        const convertedUrl = URL.createObjectURL(blob);
+        const convertedSize = blob.size;
+
+        setFiles((prev) =>
+          prev.map((f, i) =>
+            i === index
+              ? {
+                  ...f,
+                  converted: convertedUrl,
+                  convertedSize,
+                  isConverting: false,
+                }
+              : f,
+          ),
+        );
+      },
+      mimeType,
+      conversionQuality,
     );
   };
 
   const downloadFile = (convertedData: string, originalName: string) => {
     const link = document.createElement("a");
     link.href = convertedData;
-    link.download = originalName.replace(/\.(jpg|jpeg)$/i, ".png");
+    const extension = outputFormat;
+    link.download = originalName.replace(/\.(jpg|jpeg)$/i, `.${extension}`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -155,6 +186,44 @@ const JpgToPng = () => {
           </p>
         </div>
 
+        {/* Conversion Settings */}
+        <div className="tool-settings">
+          <div className="setting-group">
+            <label>Output Format:</label>
+            <div className="format-toggles">
+              <button
+                className={outputFormat === "png" ? "active" : ""}
+                onClick={() => setOutputFormat("png")}
+              >
+                PNG (Lossless)
+              </button>
+              <button
+                className={outputFormat === "webp" ? "active" : ""}
+                onClick={() => setOutputFormat("webp")}
+              >
+                WebP (Optimized)
+              </button>
+            </div>
+          </div>
+
+          {outputFormat === "webp" && (
+            <div className="setting-group">
+              <label>Quality: {Math.round(quality * 100)}%</label>
+              <input
+                type="range"
+                min="0.1"
+                max="1"
+                step="0.05"
+                value={quality}
+                onChange={(e) => setQuality(parseFloat(e.target.value))}
+              />
+              <span className="setting-hint">
+                Lower quality = Smaller file size
+              </span>
+            </div>
+          )}
+        </div>
+
         {files.length === 0 ? (
           <div className="upload-section">
             <div className="upload-container">
@@ -197,9 +266,16 @@ const JpgToPng = () => {
                   </div>
                   <div className="file-info">
                     <span className="file-name">{fileObj.file.name}</span>
-                    <span className="file-size">
-                      {(fileObj.file.size / 1024).toFixed(2)} KB
-                    </span>
+                    <div className="file-stats">
+                      <span className="file-size">
+                        {(fileObj.file.size / 1024).toFixed(2)} KB
+                      </span>
+                      {fileObj.convertedSize && (
+                        <span className="converted-size">
+                          → {(fileObj.convertedSize / 1024).toFixed(2)} KB
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <div className="card-actions">
                     {!fileObj.converted ? (
