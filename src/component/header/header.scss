@@ -25,7 +25,7 @@ header {
   font-weight: 700;
   font-size: 20px;
   color: #e5322d; // iLovePDF Red
-  
+
   svg {
     width: 32px;
     height: 32px;
@@ -95,7 +95,8 @@ header {
   padding: 12px 0;
   z-index: 1001;
 
-  a, .disabled-link {
+  a,
+  .disabled-link {
     display: block;
     padding: 8px 16px;
     text-decoration: none;
@@ -111,7 +112,7 @@ header {
       pointer-events: none;
       opacity: 0.5;
       cursor: default;
-      
+
       &:hover {
         background: transparent;
         color: inherit;
@@ -172,5 +173,179 @@ header {
 
   &:hover {
     color: #262626;
+  }
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1002;
+
+  span {
+    width: 24px;
+    height: 2px;
+    background: #4d4d4d;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+  }
+
+  &.active {
+    span {
+      background: #e5322d;
+
+      &:first-child {
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+
+      &:last-child {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100vh;
+  background: white;
+  z-index: 1005;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  &.open {
+    left: 0;
+  }
+
+  .sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f0f0f0;
+
+    .logo {
+      margin-left: 0;
+    }
+
+    .close-btn {
+      background: transparent;
+      border: none;
+      color: #4d4d4d;
+      cursor: pointer;
+      padding: 5px;
+
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      &:hover {
+        color: #e5322d;
+      }
+    }
+  }
+
+  .sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+
+    .sidebar-section {
+      margin-bottom: 24px;
+
+      .section-title {
+        padding: 0 0 12px 0;
+        border-bottom: 1px solid #f8f9fa;
+        margin-bottom: 12px;
+      }
+
+      a {
+        display: block;
+        padding: 10px 0;
+        text-decoration: none;
+        color: #4d4d4d;
+        font-weight: 500;
+        font-size: 15px;
+        transition: color 0.2s;
+
+        &:hover {
+          color: #e5322d;
+        }
+
+        &.disabled {
+          opacity: 0.5;
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}
+
+/* Sidebar Overlay */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2px);
+  z-index: 1004;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Queries */
+@media (max-width: 991px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .nav-wrapper {
+    margin-left: 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .dots-icon {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobile-sidebar {
+    width: 100%;
+    left: -100%;
   }
 }
