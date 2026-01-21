@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import type { ChangeEvent, DragEvent } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import "./pngToJpg.scss";
 
 interface FileWithPreview {
@@ -13,6 +16,7 @@ interface FileWithPreview {
 }
 
 const PngToJpg = () => {
+  const metadata = SEO_METADATA.PNG_TO_JPG;
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [quality, setQuality] = useState(0.85); // Default quality for JPG
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -137,18 +141,21 @@ const PngToJpg = () => {
       onDragOver={(e) => e.preventDefault()}
       onDrop={onDrop}
     >
-      <Helmet>
-        <title>
-          Convert PNG to JPG Online - Fast & Quality Controlled | File Edit
-        </title>
-        <meta
-          name="description"
-          content="Quickly convert PNG images to high-quality JPG files. Adjust quality to control file size."
-        />
-      </Helmet>
-
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "PNG to JPG Converter",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
-
       <main className="tool-page">
         <div className="tool-header">
           <h1>PNG to JPG</h1>

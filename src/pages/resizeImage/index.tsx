@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import "./resizeImage.scss";
 
 interface FileWithPreview {
@@ -11,6 +14,7 @@ interface FileWithPreview {
 }
 
 const ResizeImage = () => {
+  const metadata = SEO_METADATA.RESIZE_IMAGE;
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [width, setWidth] = useState(800);
   const [maintainAspectRatio, setMaintainAspectRatio] = useState(true);
@@ -67,9 +71,20 @@ const ResizeImage = () => {
 
   return (
     <div className="page-wrapper">
-      <Helmet>
-        <title>Resize Image Online - Set custom dimensions | File Edit</title>
-      </Helmet>
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "Image Resizer",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
       <main className="tool-page">
         <div className="tool-header">
