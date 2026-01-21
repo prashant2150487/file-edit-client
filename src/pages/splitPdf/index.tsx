@@ -1,10 +1,14 @@
 import { useState, useRef } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import { PDFDocument } from "pdf-lib";
 import "./splitPdf.scss";
 
 const SplitPdf = () => {
+  const metadata = SEO_METADATA.SPLIT_PDF;
   const [file, setFile] = useState<File | null>(null);
   const [range, setRange] = useState("1-1");
   const [isSplitting, setIsSplitting] = useState(false);
@@ -64,9 +68,20 @@ const SplitPdf = () => {
 
   return (
     <div className="page-wrapper">
-      <Helmet>
-        <title>Split PDF - Extract pages from PDF document | File Edit</title>
-      </Helmet>
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "PDF Splitter",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
       <main className="tool-page">
         <div className="tool-header">

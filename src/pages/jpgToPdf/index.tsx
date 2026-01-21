@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import { jsPDF } from "jspdf";
 import "./jpgToPdf.scss";
 
@@ -12,6 +15,7 @@ interface FileWithPreview {
 }
 
 const JpgToPdf = () => {
+  const metadata = SEO_METADATA.JPG_TO_PDF;
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [pageSize, setPageSize] = useState<"a4" | "letter">("a4");
   const [orientation, setOrientation] = useState<"p" | "l">("p");
@@ -82,9 +86,20 @@ const JpgToPdf = () => {
 
   return (
     <div className="page-wrapper">
-      <Helmet>
-        <title>JPG to PDF - Convert Images to PDF Document | File Edit</title>
-      </Helmet>
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "JPG to PDF Converter",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
       <main className="tool-page">
         <div className="tool-header">

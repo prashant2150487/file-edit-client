@@ -1,6 +1,9 @@
 import { useState, useRef, useEffect } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import "./compressImage.scss";
 
 interface FileWithPreview {
@@ -12,6 +15,7 @@ interface FileWithPreview {
 }
 
 const CompressImage = () => {
+  const metadata = SEO_METADATA.COMPRESS_IMAGE;
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [quality, setQuality] = useState(0.6); // Default aggressive compression
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -89,12 +93,20 @@ const CompressImage = () => {
         addFiles(Array.from(e.dataTransfer.files));
       }}
     >
-      <Helmet>
-        <title>
-          Compress Images Online - Reduce file size without losing quality |
-          File Edit
-        </title>
-      </Helmet>
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "Image Compressor",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
       <main className="tool-page">
         <div className="tool-header">

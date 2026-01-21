@@ -1,6 +1,9 @@
 import { useState, useRef } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import * as pdfjsLib from "pdfjs-dist";
 import "./pdfToJpg.scss";
 
@@ -13,6 +16,7 @@ interface ConvertedPage {
 }
 
 const PdfToJpg = () => {
+  const metadata = SEO_METADATA.PDF_TO_JPG;
   const [file, setFile] = useState<File | null>(null);
   const [images, setImages] = useState<ConvertedPage[]>([]);
   const [isConverting, setIsConverting] = useState(false);
@@ -70,9 +74,20 @@ const PdfToJpg = () => {
 
   return (
     <div className="page-wrapper">
-      <Helmet>
-        <title>PDF to JPG - Convert PDF pages to images | File Edit</title>
-      </Helmet>
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "PDF to JPG Converter",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
       <main className="tool-page">
         <div className="tool-header">

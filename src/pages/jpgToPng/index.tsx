@@ -1,7 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import type { ChangeEvent, DragEvent } from "react";
-import { Helmet } from "react-helmet-async";
 import Header from "../../component/header";
+import SEO from "../../component/seo";
+import StructuredData from "../../component/seo/StructuredData";
+import { SEO_METADATA } from "../../constants/seoMetadata";
+import { generateSoftwareApplicationSchema } from "../../utils/structuredData";
 import "./jpgToPng.scss";
 
 interface FileWithPreview {
@@ -13,6 +16,7 @@ interface FileWithPreview {
 }
 
 const JpgToPng = () => {
+  const metadata = SEO_METADATA.JPG_TO_PNG;
   const [files, setFiles] = useState<FileWithPreview[]>([]);
   const [quality, setQuality] = useState(0.8);
   const [outputFormat, setOutputFormat] = useState<"png" | "webp">("png");
@@ -135,47 +139,20 @@ const JpgToPng = () => {
       onDragOver={(e) => e.preventDefault()}
       onDrop={onDrop}
     >
-      <Helmet>
-        <title>
-          Convert JPG to PNG Online - High Quality & Free | File Edit
-        </title>
-        <meta
-          name="description"
-          content="Easily convert your JPG images to PNG format online for free. Support for high-quality conversion, transparency, and bulk processing. No registration required."
-        />
-        <meta
-          name="keywords"
-          content="JPG to PNG, image converter, convert JPG to PNG, free online converter, bulk image conversion"
-        />
-        <link rel="canonical" href="https://fileedit.com/jpg-to-png" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://fileedit.com/jpg-to-png" />
-        <meta
-          property="og:title"
-          content="Convert JPG to PNG Online - High Quality & Free"
-        />
-        <meta
-          property="og:description"
-          content="Easily convert your JPG images to PNG format online for free. Support for high-quality conversion and transparency."
-        />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://fileedit.com/jpg-to-png"
-        />
-        <meta
-          property="twitter:title"
-          content="Convert JPG to PNG Online - High Quality & Free"
-        />
-        <meta
-          property="twitter:description"
-          content="Easily convert your JPG images to PNG format online for free."
-        />
-      </Helmet>
+      <SEO
+        title={metadata.title}
+        description={metadata.description}
+        keywords={metadata.keywords}
+        canonical={metadata.canonical}
+        ogImage={metadata.ogImage}
+      />
+      <StructuredData
+        data={generateSoftwareApplicationSchema(
+          "JPG to PNG Converter",
+          metadata.description,
+          metadata.canonical
+        )}
+      />
       <Header />
       <main className="tool-page">
         <div className="tool-header">
