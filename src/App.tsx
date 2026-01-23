@@ -10,8 +10,8 @@ function App() {
     <>
       <HelmetProvider>
         <Helmet
-          titleTemplate="%s | File Edit"
-          defaultTitle="File Edit - Free Online PDF & Image Conversion Tools"
+          titleTemplate="%s | Doxius"
+          defaultTitle="Doxius - Free Online PDF & Image Conversion Tools"
         >
           <meta
             name="description"

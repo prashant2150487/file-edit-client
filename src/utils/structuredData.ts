@@ -4,7 +4,7 @@ import { DOMAIN_URL } from "../constants/seoMetadata";
 export const generateOrganizationSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "File Edit",
+  name: "Doxius",
   url: DOMAIN_URL,
   logo: `${DOMAIN_URL}/logo.png`,
   description:
@@ -24,7 +24,7 @@ export const generateOrganizationSchema = () => ({
 export const generateWebsiteSchema = () => ({
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "File Edit",
+  name: "Doxius",
   url: DOMAIN_URL,
   potentialAction: {
     "@type": "SearchAction",
@@ -72,7 +72,7 @@ export const generateToolSchema = (
   url: toolUrl,
   provider: {
     "@type": "Organization",
-    name: "File Edit",
+    name: "Doxius",
     url: DOMAIN_URL,
   },
 });

@@ -3,7 +3,7 @@ const DOMAIN = "https://fileedit.com";
 
 export const SEO_METADATA = {
   HOME: {
-    title: "File Edit - Free Online PDF & Image Conversion Tools",
+    title: "Doxius - Free Online PDF & Image Conversion Tools",
     description:
       "Free online PDF and image editor. Convert JPG to PNG, merge PDFs, compress images, and more. No registration required.",
     keywords:

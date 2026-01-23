@@ -111,18 +111,18 @@ const Home = () => {
   return (
     <div className="home-container">
       <Helmet>
-        <title>File Edit - Premium Online PDF & Image Tools | 100% Free</title>
+        <title>Doxius - Premium Online PDF & Image Tools | 100% Free</title>
         <meta
           name="description"
-          content="File Edit is an all-in-one platform for effortless PDF management and high-quality image conversion. Professional-grade tools for Merging, Splitting, Compressing PDFs, and converting JPG to PNG/WebP instantly. No registration, 100% private and free."
+          content="Doxius is an all-in-one platform for effortless PDF management and high-quality image conversion. Professional-grade tools for Merging, Splitting, Compressing PDFs, and converting JPG to PNG/WebP instantly. No registration, 100% private and free."
         />
         <meta
           name="keywords"
-          content="PDF tools, image converter, online file editor, merge PDF online, split PDF pages, JPG to PNG converter, JPG to WebP, compress images without quality loss, free PDF editor"
+          content="PDF tools, image converter, online Doxiusor, merge PDF online, split PDF pages, JPG to PNG converter, JPG to WebP, compress images without quality loss, free PDF editor"
         />
         <meta
           property="og:title"
-          content="File Edit - Premium Online PDF & Image Tools"
+          content="Doxius - Premium Online PDF & Image Tools"
         />
         <meta
           property="og:description"
@@ -264,7 +264,7 @@ const Home = () => {
           <div className="container">
             <h2>Frequently Asked Questions</h2>
             <div className="faq-item">
-              <h3>Is File Edit safe to use?</h3>
+              <h3>Is Doxius safe to use?</h3>
               <p>
                 Yes, absolutely. We use industry-standard encryption to protect
                 your data during transit. Your files are only stored temporarily
@@ -281,7 +281,7 @@ const Home = () => {
             <div className="faq-item">
               <h3>Does it work on mobile devices?</h3>
               <p>
-                Yes! File Edit is fully responsive and optimized for mobile
+                Yes! Doxius is fully responsive and optimized for mobile
                 browsers, so you can edit and convert files on the go.
               </p>
             </div>
@@ -296,7 +296,7 @@ const Home = () => {
               <svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
               </svg>
-              File Edit
+              Doxius
             </Link>
             <p>
               Your all-in-one solution for PDF management and image conversion.
@@ -347,7 +347,7 @@ const Home = () => {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; 2026 File Edit. All rights reserved.</p>
+          <p>&copy; 2026 Doxius. All rights reserved.</p>
           <div className="social-links">Made with &hearts; for the web</div>
         </div>
       </footer>

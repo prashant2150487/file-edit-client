@@ -44,7 +44,7 @@ const SEO: React.FC<SEOProps> = ({
       {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
       <meta name="language" content="English" />
-      <meta name="author" content="File Edit" />
+      <meta name="author" content="Doxius" />
 
       {children}
     </Helmet>
