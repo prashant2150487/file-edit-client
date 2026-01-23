@@ -120,10 +120,10 @@ const Header = () => {
                 <div className="section-title" style={{ marginTop: "8px" }}>
                   Edit Image
                 </div>
-                <Link to={ROUTES.HOME} className="disabled">
+                <Link to={ROUTES.COMPRESS_IMAGE}>
                   Compress Image
                 </Link>
-                <Link to={ROUTES.HOME} className="disabled">
+                <Link to={ROUTES.RESIZE_IMAGE} className="disabled">
                   Resize Image
                 </Link>
                 <Link to={ROUTES.HOME} className="disabled">
