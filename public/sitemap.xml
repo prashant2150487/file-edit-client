@@ -1,81 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <!-- Homepage - Highest Priority -->
   <url>
-    <loc>https://doxius.com/</loc>
+    <loc>https://doxius.com</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
-
-  <!-- Image Conversion Tools -->
   <url>
     <loc>https://doxius.com/jpg-to-png</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/png-to-jpg</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/compress-image</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/resize-image</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
-
-  <!-- PDF Conversion Tools -->
   <url>
     <loc>https://doxius.com/jpg-to-pdf</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/word-to-pdf</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/pdf-to-word</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
-    <loc>https://fileedit.com/pdf-to-jpg</loc>
+    <loc>https://doxius.com/pdf-to-jpg</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/merge-pdf</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/split-pdf</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/compress-pdf</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-21</lastmod>
+    <lastmod>2026-01-26</lastmod>
   </url>
 </urlset>
