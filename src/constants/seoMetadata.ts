@@ -1,5 +1,5 @@
 // SEO Metadata for all pages
-const DOMAIN = "https://fileedit.com";
+const DOMAIN = "https://Doxius.com"
 
 export const SEO_METADATA = {
   HOME: {
@@ -29,10 +29,10 @@ export const SEO_METADATA = {
     canonical: `${DOMAIN}/png-to-jpg`,
   },
   COMPRESS_IMAGE: {
-    title: "Image Compressor - Reduce Image Size Online",
+    title: "Easily compress images at optimal quality in seconds",
     description:
-      "Compress images without losing quality. Reduce JPG and PNG file sizes instantly. Free and secure image optimization.",
-    keywords: "image compressor, reduce size, optimize images, online tool",
+      "Choose multiple JPG, PNG or GIF images and compress them in seconds for free! You can shrink with ease in just a few clicks!",
+    keywords: "image compressor, reduce size, optimize images, online tool,Image, compress, resize, crop, convert, jpeg, png, gif, tiff, raw",
     ogImage: `${DOMAIN}/og-image-compress.jpg`,
     canonical: `${DOMAIN}/compress-image`,
   },
