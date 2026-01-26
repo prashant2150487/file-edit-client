@@ -13,17 +13,17 @@ export const SEO_METADATA = {
     canonical: `${DOMAIN}/`,
   },
   JPG_TO_PNG: {
-    title: "JPG to PNG Converter - Free Online Image Conversion",
+    title: "Convert JPG to PNG Online",
     description:
-      "Convert JPG images to PNG format instantly. No installation needed, completely free. Preserve quality and transparency.",
+      "Free browser-based JPG to PNG converter. Your files never leave your device – all conversion happens locally in your browser.",
     keywords: "JPG to PNG, image converter, format conversion, online tool",
     ogImage: `${DOMAIN}/og-image-jpg-png.jpg`,
     canonical: `${DOMAIN}/jpg-to-png`,
   },
   PNG_TO_JPG: {
-    title: "PNG to JPG Converter - Free Online Image Conversion",
+    title: "Convert PNG to JPG Online",
     description:
-      "Convert PNG images to JPG format for free. Reduce file size while maintaining quality. Fast and secure conversion.",
+      "Free browser-based PNG to JPG converter. Your files never leave your device – all conversion happens locally in your browser.",
     keywords: "PNG to JPG, image converter, compression, online tool",
     ogImage: `${DOMAIN}/og-image-png-jpg.jpg`,
     canonical: `${DOMAIN}/png-to-jpg`,

@@ -156,10 +156,9 @@ const JpgToPng = () => {
       <Header />
       <main className="tool-page">
         <div className="tool-header">
-          <h1>JPG to PNG</h1>
+          <h1>Convert JPG to PNG</h1>
           <p>
-            Convert your JPG images to PNG format with high quality and
-            transparency support.
+            Transform JPG images to PNG for lossless quality and transparency support. Ideal for graphics, logos, and images that need editing. All processing happens in your browser – completely private.
           </p>
         </div>
 
