@@ -10,9 +10,9 @@ export const generateOrganizationSchema = () => ({
   description:
     "Free online PDF and image editor with conversion, merging, compression, and resizing tools",
   sameAs: [
-    "https://twitter.com/fileedit",
-    "https://facebook.com/fileedit",
-    "https://instagram.com/fileedit",
+    "https://twitter.com/doxius",
+    "https://facebook.com/doxius",
+    "https://instagram.com/doxius",
   ],
   contactPoint: {
     "@type": "ContactPoint",
