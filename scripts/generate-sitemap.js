@@ -13,14 +13,14 @@ const pages = [
   { loc: "/jpg-to-png", priority: "0.9", changefreq: "monthly" },
   { loc: "/png-to-jpg", priority: "0.9", changefreq: "monthly" },
   { loc: "/compress-image", priority: "0.8", changefreq: "monthly" },
-  { loc: "/resize-image", priority: "0.8", changefreq: "monthly" },
-  { loc: "/jpg-to-pdf", priority: "0.9", changefreq: "monthly" },
-  { loc: "/word-to-pdf", priority: "0.9", changefreq: "monthly" },
-  { loc: "/pdf-to-word", priority: "0.9", changefreq: "monthly" },
-  { loc: "/pdf-to-jpg", priority: "0.9", changefreq: "monthly" },
-  { loc: "/merge-pdf", priority: "0.9", changefreq: "monthly" },
-  { loc: "/split-pdf", priority: "0.9", changefreq: "monthly" },
-  { loc: "/compress-pdf", priority: "0.8", changefreq: "monthly" },
+  // { loc: "/resize-image", priority: "0.8", changefreq: "monthly" },
+  // { loc: "/jpg-to-pdf", priority: "0.9", changefreq: "monthly" },
+  // { loc: "/word-to-pdf", priority: "0.9", changefreq: "monthly" },
+  // { loc: "/pdf-to-word", priority: "0.9", changefreq: "monthly" },
+  // { loc: "/pdf-to-jpg", priority: "0.9", changefreq: "monthly" },
+  // { loc: "/merge-pdf", priority: "0.9", changefreq: "monthly" },
+  // { loc: "/split-pdf", priority: "0.9", changefreq: "monthly" },
+  // { loc: "/compress-pdf", priority: "0.8", changefreq: "monthly" },
 ];
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
