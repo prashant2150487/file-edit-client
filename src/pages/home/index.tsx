@@ -128,7 +128,7 @@ const Home = () => {
           property="og:description"
           content="Effortless PDF management and high-quality image conversion. 100% Free & Secure."
         />
-        <link rel="canonical" href="https://fileedit.com/" />
+        <link rel="canonical" href="https://doxius.com/" />
       </Helmet>
 
       <Header />
