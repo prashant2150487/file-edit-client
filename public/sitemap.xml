@@ -5,25 +5,25 @@
     <loc>https://doxius.com</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-01</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/jpg-to-png</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-01</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/png-to-jpg</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-01</lastmod>
   </url>
   <url>
     <loc>https://doxius.com/compress-image</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
-    <lastmod>2026-01-26</lastmod>
+    <lastmod>2026-02-01</lastmod>
   </url>
   
 </urlset>
