@@ -15,7 +15,7 @@ const Header = () => {
       <div className="header-container">
         {/* Logo */}
         <Link to={ROUTES.HOME} className="logo">
-          <img src={logo} alt="Logo" width={50}/>
+          <img src={logo} alt="Logo" width={50} />
           Doxius
         </Link>
 
@@ -23,7 +23,7 @@ const Header = () => {
         <nav className="nav-wrapper desktop-nav">
           <div className="nav-main">
             <div className="nav-item">
-              <Link to={ROUTES.HOME} className="nav-link disabled">
+              <Link to={ROUTES.HOME} className="nav-link">
                 All PDF tools
                 <svg
                   className="dropdown-arrow"
@@ -37,19 +37,15 @@ const Header = () => {
               </Link>
               <div className="dropdown-menu">
                 <div className="section-title">Organize PDF</div>
-                <Link to={ROUTES.HOME} className="disabled">
-                  Merge PDF
-                </Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  Split PDF
-                </Link>
+                <Link to={ROUTES.MERGE_PDF}>Merge PDF</Link>
+                <Link to={ROUTES.SPLIT_PDF}>Split PDF</Link>
                 <Link to={ROUTES.HOME} className="disabled">
                   Remove pages
                 </Link>
                 <div className="section-title" style={{ marginTop: "8px" }}>
                   Optimize PDF
                 </div>
-                <Link to={ROUTES.HOME} className="disabled">
+                <Link to={ROUTES.COMPRESS_PDF} className="disabled">
                   Compress PDF
                 </Link>
                 <Link to={ROUTES.HOME} className="disabled">
@@ -59,7 +55,7 @@ const Header = () => {
             </div>
 
             <div className="nav-item">
-              <Link to={ROUTES.HOME} className="nav-link disabled">
+              <Link to={ROUTES.HOME} className="nav-link">
                 Convert PDF
                 <svg
                   className="dropdown-arrow"
@@ -73,21 +69,13 @@ const Header = () => {
               </Link>
               <div className="dropdown-menu">
                 <div className="section-title">Convert to PDF</div>
-                <Link to={ROUTES.HOME} className="disabled">
-                  Word to PDF
-                </Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  JPG to PDF
-                </Link>
+                <Link to={ROUTES.WORD_TO_PDF}>Word to PDF</Link>
+                <Link to={ROUTES.JPG_TO_PDF}>JPG to PDF</Link>
                 <div className="section-title" style={{ marginTop: "8px" }}>
                   Convert from PDF
                 </div>
-                <Link to={ROUTES.HOME} className="disabled">
-                  PDF to Word
-                </Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  PDF to JPG
-                </Link>
+                <Link to={ROUTES.PDF_TO_WORD}>PDF to Word</Link>
+                <Link to={ROUTES.PDF_TO_JPG}>PDF to JPG</Link>
               </div>
             </div>
 
@@ -120,12 +108,8 @@ const Header = () => {
                 <div className="section-title" style={{ marginTop: "8px" }}>
                   Edit Image
                 </div>
-                <Link to={ROUTES.COMPRESS_IMAGE}>
-                  Compress Image
-                </Link>
-                <Link to={ROUTES.RESIZE_IMAGE} className="disabled">
-                  Resize Image
-                </Link>
+                <Link to={ROUTES.COMPRESS_IMAGE}>Compress Image</Link>
+                <Link to={ROUTES.RESIZE_IMAGE}>Resize Image</Link>
                 <Link to={ROUTES.HOME} className="disabled">
                   Crop Image
                 </Link>
@@ -185,18 +169,10 @@ const Header = () => {
         <div className="sidebar-content">
           <div className="sidebar-section">
             <div className="section-title">Organize PDF</div>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.MERGE_PDF} onClick={() => setIsMenuOpen(false)}>
               Merge PDF
             </Link>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.SPLIT_PDF} onClick={() => setIsMenuOpen(false)}>
               Split PDF
             </Link>
             <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
@@ -205,32 +181,16 @@ const Header = () => {
           </div>
           <div className="sidebar-section">
             <div className="section-title">Convert PDF</div>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.WORD_TO_PDF} onClick={() => setIsMenuOpen(false)}>
               Word to PDF
             </Link>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.JPG_TO_PDF} onClick={() => setIsMenuOpen(false)}>
               JPG to PDF
             </Link>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.PDF_TO_WORD} onClick={() => setIsMenuOpen(false)}>
               PDF to Word
             </Link>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.PDF_TO_JPG} onClick={() => setIsMenuOpen(false)}>
               PDF to JPG
             </Link>
           </div>
@@ -243,17 +203,12 @@ const Header = () => {
               PNG to JPG
             </Link>
             <Link
-              to={ROUTES.HOME}
-              className="disabled"
+              to={ROUTES.COMPRESS_IMAGE}
               onClick={() => setIsMenuOpen(false)}
             >
               Compress Image
             </Link>
-            <Link
-              to={ROUTES.HOME}
-              className="disabled"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link to={ROUTES.RESIZE_IMAGE} onClick={() => setIsMenuOpen(false)}>
               Resize Image
             </Link>
           </div>

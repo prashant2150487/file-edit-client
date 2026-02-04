@@ -23,16 +23,31 @@
     align-items: center;
     gap: 20px;
     
+    .drag-handle {
+        color: #ccc;
+        cursor: grab;
+        margin-right: -10px;
+        transition: color 0.2s;
+        
+        &:hover {
+            color: #666;
+        }
+
+        &:active {
+            cursor: grabbing;
+        }
+    }
+
     .order {
-        background: #f0f0f0;
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 700;
-        font-size: 14px;
+      background: #f0f0f0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
     }
 
     .name {
@@ -52,6 +67,25 @@
     font-size: 24px;
     color: #ccc;
     cursor: pointer;
-    &:hover { color: #e5322d; }
+    &:hover {
+      color: #e5322d;
+    }
+  }
+
+  /* Drag and Drop Styles */
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &.dragging {
+    opacity: 0.5;
+    background: #f9f9f9;
+    border: 1px dashed #ccc;
+  }
+
+  &.drag-over {
+    transform: translateY(4px);
+    box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+    border-top: 2px solid #5d5dff;
   }
 }
