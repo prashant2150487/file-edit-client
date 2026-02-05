@@ -39,18 +39,12 @@ const Header = () => {
                 <div className="section-title">Organize PDF</div>
                 <Link to={ROUTES.MERGE_PDF}>Merge PDF</Link>
                 <Link to={ROUTES.SPLIT_PDF}>Split PDF</Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  Remove pages
-                </Link>
+                <Link to={ROUTES.REMOVE_PAGES}>Remove pages</Link>
                 <div className="section-title" style={{ marginTop: "8px" }}>
                   Optimize PDF
                 </div>
-                <Link to={ROUTES.COMPRESS_PDF} className="disabled">
-                  Compress PDF
-                </Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  Repair PDF
-                </Link>
+                <Link to={ROUTES.COMPRESS_PDF}>Compress PDF</Link>
+                <Link to={ROUTES.REPAIR_PDF}>Repair PDF</Link>
               </div>
             </div>
 
@@ -175,7 +169,7 @@ const Header = () => {
             <Link to={ROUTES.SPLIT_PDF} onClick={() => setIsMenuOpen(false)}>
               Split PDF
             </Link>
-            <Link to={ROUTES.HOME} onClick={() => setIsMenuOpen(false)}>
+            <Link to={ROUTES.REMOVE_PAGES} onClick={() => setIsMenuOpen(false)}>
               Remove pages
             </Link>
           </div>

@@ -15,4 +15,6 @@ export const ROUTES = {
   MERGE_PDF: "/merge-pdf",
   SPLIT_PDF: "/split-pdf",
   COMPRESS_PDF: "/compress-pdf",
+  REPAIR_PDF: "/repair-pdf",
+  REMOVE_PAGES: "/remove-pages",
 } as const;

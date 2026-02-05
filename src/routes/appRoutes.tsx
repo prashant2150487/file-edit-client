@@ -9,6 +9,9 @@ import SplitPdf from "../pages/splitPdf";
 import PdfToJpg from "../pages/pdfToJpg";
 import WordToPdf from "../pages/wordToPdf";
 import PdfToWord from "../pages/pdfToWord";
+import RemovePages from "../pages/removePages";
+import CompressPdf from "../pages/compressPdf";
+import RepairPdf from "../pages/repairPdf";
 import { ROUTES } from "./routePaths";
 import { Routes, Route } from "react-router-dom";
 
@@ -26,6 +29,9 @@ const AppRoutes = () => {
       <Route path={ROUTES.PDF_TO_JPG} element={<PdfToJpg />} />
       <Route path={ROUTES.WORD_TO_PDF} element={<WordToPdf />} />
       <Route path={ROUTES.PDF_TO_WORD} element={<PdfToWord />} />
+      <Route path={ROUTES.REMOVE_PAGES} element={<RemovePages />} />
+      <Route path={ROUTES.COMPRESS_PDF} element={<CompressPdf />} />
+      <Route path={ROUTES.REPAIR_PDF} element={<RepairPdf />} />
     </Routes>
   );
 };
