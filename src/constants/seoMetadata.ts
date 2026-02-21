@@ -100,6 +100,14 @@ export const SEO_METADATA = {
     ogImage: `${DOMAIN}/og-image-compress-pdf.jpg`,
     canonical: `${DOMAIN}/compress-pdf`,
   },
+  CROP_IMAGE: {
+    title: "Crop Image Online - Free Image Cropper Tool",
+    description:
+      "Crop images online for free. Select custom areas, use preset aspect ratios, and download instantly. All processing happens in your browser.",
+    keywords: "crop image, image cropper, photo crop, trim image, online tool",
+    ogImage: `${DOMAIN}/og-image-crop.jpg`,
+    canonical: `${DOMAIN}/crop-image`,
+  },
 } as const;
 
 export const DOMAIN_URL = DOMAIN;

@@ -104,9 +104,7 @@ const Header = () => {
                 </div>
                 <Link to={ROUTES.COMPRESS_IMAGE}>Compress Image</Link>
                 <Link to={ROUTES.RESIZE_IMAGE}>Resize Image</Link>
-                <Link to={ROUTES.HOME} className="disabled">
-                  Crop Image
-                </Link>
+                <Link to={ROUTES.CROP_IMAGE}>Crop Image</Link>
               </div>
             </div>
           </div>
@@ -204,6 +202,9 @@ const Header = () => {
             </Link>
             <Link to={ROUTES.RESIZE_IMAGE} onClick={() => setIsMenuOpen(false)}>
               Resize Image
+            </Link>
+            <Link to={ROUTES.CROP_IMAGE} onClick={() => setIsMenuOpen(false)}>
+              Crop Image
             </Link>
           </div>
         </div>

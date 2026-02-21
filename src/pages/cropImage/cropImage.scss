@@ -1,0 +1,408 @@
+@import "../../styles/variables.scss";
+
+// === Crop Tool Specific Styles ===
+
+.crop-tool-page {
+  padding-bottom: 60px;
+}
+
+// Upload drop zone
+.upload-drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 80px 40px;
+  border: 2px dashed #ccc;
+  border-radius: 16px;
+  background: white;
+  transition: all 0.3s;
+  max-width: 600px;
+  margin: 0 auto;
+
+  svg {
+    color: #bbb;
+    transition: color 0.3s;
+  }
+
+  &:hover {
+    border-color: #e5322d;
+    background: #fff8f8;
+
+    svg {
+      color: #e5322d;
+    }
+  }
+}
+
+.drag-active .upload-drop-zone {
+  border-color: #e5322d;
+  background: #fff0f0;
+  transform: scale(1.01);
+}
+
+// === Crop Workspace ===
+.crop-workspace {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+// Toolbar
+.crop-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: white;
+  padding: 16px 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+
+  .toolbar-label {
+    font-weight: 700;
+    font-size: 13px;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+  }
+
+  .ratio-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ratio-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .ratio-btn {
+    padding: 6px 14px;
+    border: 2px solid #eee;
+    background: white;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    color: #666;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: #ddd;
+      background: #fafafa;
+    }
+
+    &.active {
+      border-color: #e5322d;
+      background: #fff5f5;
+      color: #e5322d;
+    }
+  }
+
+  .crop-dimensions {
+    background: #f3f0f1;
+    padding: 6px 16px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #555;
+    font-family: monospace;
+    letter-spacing: 0.5px;
+  }
+
+  .toolbar-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+  }
+
+  .toolbar-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+
+  .change-btn {
+    background: #f3f0f1;
+    color: #666;
+
+    &:hover {
+      background: #e8e5e6;
+      color: #333;
+    }
+  }
+
+  .crop-btn {
+    background: #e5322d;
+    color: white;
+    box-shadow: 0 4px 12px rgba(229, 50, 45, 0.3);
+
+    &:hover:not(:disabled) {
+      background: #c22925;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(229, 50, 45, 0.4);
+    }
+  }
+}
+
+// Canvas wrapper
+.crop-canvas-wrapper {
+  display: flex;
+  justify-content: center;
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.crop-canvas {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+  line-height: 0;
+
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 65vh;
+    user-select: none;
+    pointer-events: none;
+  }
+}
+
+// Dark overlay
+.crop-overlay {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transition: none;
+}
+
+// Crop selection box
+.crop-selection {
+  position: absolute;
+  border: 2px solid white;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  z-index: 2;
+}
+
+// Rule of thirds grid
+.crop-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  .grid-line {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+  }
+
+  .grid-h {
+    left: 0;
+    right: 0;
+    height: 1px;
+  }
+
+  .grid-v {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+  }
+}
+
+// Resize handles
+.crop-handle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: white;
+  border: 2px solid #e5322d;
+  border-radius: 2px;
+  pointer-events: all;
+  z-index: 3;
+  transition: transform 0.15s, box-shadow 0.15s;
+
+  &:hover {
+    transform: scale(1.3);
+    box-shadow: 0 2px 8px rgba(229, 50, 45, 0.4);
+  }
+
+  // Corner handles
+  &-nw {
+    top: -6px;
+    left: -6px;
+    cursor: nw-resize;
+  }
+  &-n {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: n-resize;
+    &:hover {
+      transform: translateX(-50%) scale(1.3);
+    }
+  }
+  &-ne {
+    top: -6px;
+    right: -6px;
+    cursor: ne-resize;
+  }
+  &-w {
+    top: 50%;
+    left: -6px;
+    transform: translateY(-50%);
+    cursor: w-resize;
+    &:hover {
+      transform: translateY(-50%) scale(1.3);
+    }
+  }
+  &-e {
+    top: 50%;
+    right: -6px;
+    transform: translateY(-50%);
+    cursor: e-resize;
+    &:hover {
+      transform: translateY(-50%) scale(1.3);
+    }
+  }
+  &-sw {
+    bottom: -6px;
+    left: -6px;
+    cursor: sw-resize;
+  }
+  &-s {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: s-resize;
+    &:hover {
+      transform: translateX(-50%) scale(1.3);
+    }
+  }
+  &-se {
+    bottom: -6px;
+    right: -6px;
+    cursor: se-resize;
+  }
+}
+
+// === Crop Result Section ===
+.crop-result {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  .result-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #333;
+      margin: 0;
+    }
+  }
+
+  .download-btn {
+    background: #e5322d;
+    color: white;
+    box-shadow: 0 4px 12px rgba(229, 50, 45, 0.3);
+
+    &:hover {
+      background: #c22925;
+      transform: translateY(-1px);
+    }
+  }
+
+  .result-preview {
+    display: flex;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 16px;
+    min-height: 100px;
+
+    img {
+      max-width: 100%;
+      max-height: 50vh;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+  }
+}
+
+// === Responsive ===
+@media (max-width: 768px) {
+  .crop-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px;
+
+    .ratio-group {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .ratio-buttons {
+      flex-wrap: wrap;
+    }
+
+    .toolbar-actions {
+      margin-left: 0;
+      width: 100%;
+
+      .toolbar-btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+
+    .crop-dimensions {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .crop-canvas-wrapper {
+    padding: 12px;
+  }
+
+  .crop-result .result-header {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+}
