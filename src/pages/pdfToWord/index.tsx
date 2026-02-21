@@ -10,7 +10,6 @@ import {
   FileText,
   Download,
   RefreshCw,
-  RefreshCcw,
 } from "lucide-react";
 import "./pdfToWord.scss";
 

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef} from "react";
 import Header from "../../component/header";
 import SEO from "../../component/seo";
 import StructuredData from "../../component/seo/StructuredData";
