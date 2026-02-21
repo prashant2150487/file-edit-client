@@ -12,10 +12,34 @@ interface FileItem {
   id: string;
 }
 
+const Grip = () => (
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className="drag-handle"
+  >
+    <circle cx="9" cy="12" r="1" />
+    <circle cx="9" cy="5" r="1" />
+    <circle cx="9" cy="19" r="1" />
+    <circle cx="15" cy="12" r="1" />
+    <circle cx="15" cy="5" r="1" />
+    <circle cx="15" cy="19" r="1" />
+  </svg>
+);
+
 const MergePdf = () => {
   const metadata = SEO_METADATA.MERGE_PDF;
   const [files, setFiles] = useState<FileItem[]>([]);
   const [isMerging, setIsMerging] = useState(false);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+  const [hoveredRowIndex, setHoveredRowIndex] = useState<number | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const addFiles = (newFiles: File[]) => {
@@ -26,6 +50,44 @@ const MergePdf = () => {
         id: Math.random().toString(36).substr(2, 9),
       }));
     setFiles((prev) => [...prev, ...validFiles]);
+  };
+
+  /**
+   * Core Logic: Merge PDFs
+   * 1. Uses 'pdf-lib' to create a new PDFDocument.
+   * 2. Loads each external PDF as a donor document.
+   * 3. Copies all pages from donor documents into the main merged document.
+   * 4. Saves as a single binary blob for download.
+   */
+  /**
+   * Drag and Drop Logic
+   */
+  const handleDragStart = (index: number) => {
+    setDragIndex(index);
+  };
+
+  const handleDragEnter = (index: number) => {
+    setDragOverIndex(index);
+  };
+
+  const handleDragEnd = () => {
+    if (
+      dragIndex !== null &&
+      dragOverIndex !== null &&
+      dragIndex !== dragOverIndex
+    ) {
+      const _files = [...files];
+      const draggedFile = _files[dragIndex];
+      _files.splice(dragIndex, 1);
+      _files.splice(dragOverIndex, 0, draggedFile);
+      setFiles(_files);
+    }
+    setDragIndex(null);
+    setDragOverIndex(null);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault(); // Necessary to allow dropping
   };
 
   /**
@@ -85,7 +147,7 @@ const MergePdf = () => {
         data={generateSoftwareApplicationSchema(
           "PDF Merger",
           metadata.description,
-          metadata.canonical
+          metadata.canonical,
         )}
       />
       <Header />
@@ -105,23 +167,28 @@ const MergePdf = () => {
             >
               Select PDF files
             </button>
-            <input
-              type="file"
-              multiple
-              accept=".pdf"
-              style={{ display: "none" }}
-              ref={fileInputRef}
-              onChange={(e) =>
-                e.target.files && addFiles(Array.from(e.target.files))
-              }
-            />
           </div>
         ) : (
           <div className="files-grid-container">
             <div className="files-list">
               {files.map((f, i) => (
-                <div key={f.id} className="file-row">
+                <div
+                  key={f.id}
+                  className={`file-row ${dragIndex === i ? "dragging" : ""} ${dragOverIndex === i ? "drag-over" : ""}`}
+                  draggable={hoveredRowIndex === i}
+                  onDragStart={() => handleDragStart(i)}
+                  onDragEnter={() => handleDragEnter(i)}
+                  onDragEnd={handleDragEnd}
+                  onDragOver={handleDragOver}
+                >
                   <div className="file-info-row">
+                    <span
+                      onMouseEnter={() => setHoveredRowIndex(i)}
+                      onMouseLeave={() => setHoveredRowIndex(null)}
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <Grip />
+                    </span>
                     <span className="order">{i + 1}</span>
                     <span className="name">{f.file.name}</span>
                     <span className="size">
@@ -158,6 +225,18 @@ const MergePdf = () => {
             </div>
           </div>
         )}
+
+        {/* Hidden Input Layer - Always accessible */}
+        <input
+          type="file"
+          multiple
+          accept=".pdf"
+          style={{ display: "none" }}
+          ref={fileInputRef}
+          onChange={(e) =>
+            e.target.files && addFiles(Array.from(e.target.files))
+          }
+        />
       </main>
     </div>
   );
