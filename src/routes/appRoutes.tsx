@@ -3,6 +3,7 @@ import JpgToPng from "../pages/jpgToPng";
 import PngToJpg from "../pages/pngToJpg";
 import CompressImage from "../pages/compressImage";
 import ResizeImage from "../pages/resizeImage";
+import CropImage from "../pages/cropImage";
 import JpgToPdf from "../pages/jpgToPdf";
 import MergePdf from "../pages/mergePdf";
 import SplitPdf from "../pages/splitPdf";
@@ -23,6 +24,7 @@ const AppRoutes = () => {
       <Route path={ROUTES.PNG_TO_JPG} element={<PngToJpg />} />
       <Route path={ROUTES.COMPRESS_IMAGE} element={<CompressImage />} />
       <Route path={ROUTES.RESIZE_IMAGE} element={<ResizeImage />} />
+      <Route path={ROUTES.CROP_IMAGE} element={<CropImage />} />
       <Route path={ROUTES.JPG_TO_PDF} element={<JpgToPdf />} />
       <Route path={ROUTES.MERGE_PDF} element={<MergePdf />} />
       <Route path={ROUTES.SPLIT_PDF} element={<SplitPdf />} />
