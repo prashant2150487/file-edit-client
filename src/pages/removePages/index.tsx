@@ -1,4 +1,4 @@
-import React, { useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import Header from "../../component/header";
 import SEO from "../../component/seo";
 import StructuredData from "../../component/seo/StructuredData";
@@ -83,6 +83,7 @@ const RemovePages = () => {
           canvas.width = viewport.width;
 
           await page.render({
+            canvas: canvas,
             canvasContext: context,
             viewport: viewport,
           }).promise;
