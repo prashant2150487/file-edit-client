@@ -7,6 +7,7 @@ export const ROUTES = {
   PNG_TO_JPG: "/png-to-jpg",
   COMPRESS_IMAGE: "/compress-image",
   RESIZE_IMAGE: "/resize-image",
+  CROP_IMAGE: "/crop-image",
   // PDF Tools
   WORD_TO_PDF: "/word-to-pdf",
   JPG_TO_PDF: "/jpg-to-pdf",
