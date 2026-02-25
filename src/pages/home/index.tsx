@@ -144,9 +144,9 @@ const Home = () => {
               Convert your files instantly without compromising on quality.
             </p>
             <div className="hero-btns">
-              <a href="#pdf-tools" className="btn-primary">
+              {/* <a href="#pdf-tools" className="btn-primary">
                 View PDF Tools
-              </a>
+              </a> */}
               <Link to={ROUTES.JPG_TO_PNG} className="btn-secondary">
                 Convert JPG to PNG
               </Link>
