@@ -13,10 +13,10 @@ export const SEO_METADATA = {
     canonical: `${DOMAIN}/`,
   },
   JPG_TO_PNG: {
-    title: "Convert JPG to PNG Online",
+    title: "JPG to PNG – Convert JPG to PNG Online",
     description:
       "Free browser-based JPG to PNG converter. Your files never leave your device – all conversion happens locally in your browser.",
-    keywords: "JPG to PNG, image converter, format conversion, online tool",
+    keywords: "JPG to PNG, convert JPG to PNG, JPG to PNG converter, JPG to PNG online, free image converter, lossless conversion, image quality, transparency support, background removal, online converter, free converter, image editor",
     ogImage: `${DOMAIN}/og-image-jpg-png.jpg`,
     canonical: `${DOMAIN}/jpg-to-png`,
   },
