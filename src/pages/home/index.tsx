@@ -10,49 +10,104 @@ const Home = () => {
       title: "Merge PDF",
       description: "Combine multiple PDF files into one easily.",
       icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M15 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V7l-5-5zM14 2v4a1 1 0 001 1h4M8 13h8M8 17h8" />
         </svg>
       ),
-      route: ROUTES.HOME,
-      disabled: true,
+      route: ROUTES.MERGE_PDF,
     },
     {
       title: "Split PDF",
       description: "Extract pages from your PDF into separate files.",
       icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M8 3v3a2 2 0 01-2 2H3m18 0h-3a2 2 0 01-2-2V3m0 18v-3a2 2 0 012-2h3M3 16h3a2 2 0 012 2v3" />
         </svg>
       ),
-      route: ROUTES.HOME,
-      disabled: true,
+      route: ROUTES.SPLIT_PDF,
+    },
+    {
+      title: "Remove Pages",
+      description: "Delete unnecessary pages from your document.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+      ),
+      route: ROUTES.REMOVE_PAGES,
     },
     {
       title: "Compress PDF",
       description: "Reduce file size while optimizing for maximal quality.",
       icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M4 14l6-6 6 6M4 6l16 0M4 18l16 0" />
         </svg>
       ),
-      route: ROUTES.HOME,
-      disabled: true,
+      route: ROUTES.COMPRESS_PDF,
+    },
+    {
+      title: "Repair PDF",
+      description: "Fix corrupted or damaged PDF files.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+      ),
+      route: ROUTES.REPAIR_PDF,
+    },
+    {
+      title: "Word to PDF",
+      description: "Make DOC and DOCX files easy to read by converting them to PDF.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <path d="M14 2v6h6"></path>
+          <path d="M16 13H8"></path>
+          <path d="M16 17H8"></path>
+          <path d="M10 9H8"></path>
+        </svg>
+      ),
+      route: ROUTES.WORD_TO_PDF,
+    },
+    {
+      title: "JPG to PDF",
+      description: "Convert JPG images to PDF in seconds.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5"></circle>
+          <polyline points="21 15 16 10 5 21"></polyline>
+        </svg>
+      ),
+      route: ROUTES.JPG_TO_PDF,
+    },
+    {
+      title: "PDF to Word",
+      description: "Convert your PDF to DOC and DOCX documents.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+      ),
+      route: ROUTES.PDF_TO_WORD,
+    },
+    {
+      title: "PDF to JPG",
+      description: "Convert each PDF page into a JPG or extract all images contained in a PDF.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <circle cx="10" cy="13" r="1"></circle>
+          <polyline points="7 19 11 15 13 17 14 16 17 19"></polyline>
+        </svg>
+      ),
+      route: ROUTES.PDF_TO_JPG,
     },
   ];
 
@@ -61,12 +116,7 @@ const Home = () => {
       title: "JPG to PNG",
       description: "Convert JPG images to PNG with transparency support.",
       icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M12 20l9-5-9-5-9 5 9 5z" />
           <path d="M12 12l9-5-9-5-9 5 9 5z" />
         </svg>
@@ -77,12 +127,7 @@ const Home = () => {
       title: "PNG to JPG",
       description: "Fast conversion from PNG to high-quality JPG.",
       icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h7m4 0h5m0 0v5m0-5L12 12" />
         </svg>
       ),
@@ -92,19 +137,34 @@ const Home = () => {
       title: "Compress Image",
       description: "The best quality and compression for your images.",
       icon: (
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
           <circle cx="8.5" cy="8.5" r="1.5" />
           <path d="M21 15l-5-5L5 21" />
         </svg>
       ),
-      route: ROUTES.HOME,
-      disabled: true,
+      route: ROUTES.COMPRESS_IMAGE,
+    },
+    {
+      title: "Resize Image",
+      description: "Resize images by defining new height and width pixels.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+        </svg>
+      ),
+      route: ROUTES.RESIZE_IMAGE,
+    },
+    {
+      title: "Crop Image",
+      description: "Crop pictures exactly the way you want.",
+      icon: (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M6.13 1L6 16a2 2 0 002 2h15" />
+          <path d="M1 6.13L16 6a2 2 0 012 2v15" />
+        </svg>
+      ),
+      route: ROUTES.CROP_IMAGE,
     },
   ];
 
@@ -167,7 +227,7 @@ const Home = () => {
             <Link
               to={tool.route}
               key={index}
-              className={`tool-card ${tool.disabled ? "disabled" : ""}`}
+              className="tool-card"
             >
               <div className="icon-wrapper">{tool.icon}</div>
               <h3>{tool.title}</h3>
@@ -189,7 +249,7 @@ const Home = () => {
             <Link
               to={tool.route}
               key={index}
-              className={`tool-card ${tool.disabled ? "disabled" : ""}`}
+              className="tool-card"
             >
               <div className="icon-wrapper">{tool.icon}</div>
               <h3>{tool.title}</h3>
@@ -307,13 +367,13 @@ const Home = () => {
             <h4>PDF Tools</h4>
             <ul>
               <li>
-                <Link to={ROUTES.HOME}>Merge PDF</Link>
+                <Link to={ROUTES.MERGE_PDF}>Merge PDF</Link>
               </li>
               <li>
-                <Link to={ROUTES.HOME}>Split PDF</Link>
+                <Link to={ROUTES.SPLIT_PDF}>Split PDF</Link>
               </li>
               <li>
-                <Link to={ROUTES.HOME}>Compress PDF</Link>
+                <Link to={ROUTES.COMPRESS_PDF}>Compress PDF</Link>
               </li>
             </ul>
           </div>
@@ -324,10 +384,10 @@ const Home = () => {
                 <Link to={ROUTES.JPG_TO_PNG}>JPG to PNG</Link>
               </li>
               <li>
-                <Link to={ROUTES.HOME}>PNG to JPG</Link>
+                <Link to={ROUTES.PNG_TO_JPG}>PNG to JPG</Link>
               </li>
               <li>
-                <Link to={ROUTES.HOME}>Compress Image</Link>
+                <Link to={ROUTES.COMPRESS_IMAGE}>Compress Image</Link>
               </li>
             </ul>
           </div>
